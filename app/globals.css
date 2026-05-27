@@ -1,0 +1,356 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&display=swap');
+
+/* ────────────────────────────────────────────────────────────
+   Travio · Design System Tokens
+   Forest palette · warm cream paper · editorial type
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surfaces */
+  --paper:        #FAF6EC;
+  --paper-2:      #F2EBD8;
+  --paper-3:      #E8E0CB;
+  --surface:      #FFFFFF;
+  --surface-2:    #FDFAF2;
+
+  /* Ink */
+  --ink:          #181C16;
+  --ink-2:        #2B2F26;
+  --muted:        #6C7064;
+  --faint:        #A8AB9D;
+  --line:         #E5DFCC;
+  --line-2:       #D9D2BC;
+
+  /* Primary — forest */
+  --forest-900:   #0E2A1F;
+  --forest-800:   #143A2C;
+  --forest-700:   #1F5641;
+  --forest-600:   #2E6F55;
+  --forest-500:   #3F8868;
+  --forest-300:   #94B89F;
+  --forest-100:   #D6E4D5;
+  --forest-50:    #ECF1E2;
+
+  /* Accents */
+  --coral:        #DD7842;
+  --coral-soft:   #F6D9BE;
+  --gold:         #C29A3D;
+  --gold-soft:    #F0E1B2;
+  --rose:         #B85148;
+  --sky:          #6F94A6;
+
+  /* Semantic */
+  --accent:       var(--forest-700);
+  --accent-soft:  var(--forest-100);
+  --on-accent:    #FAF6EC;
+  --yes:          var(--forest-600);
+  --maybe:        var(--gold);
+  --no:           var(--rose);
+
+  /* Radii */
+  --r-sm:  12px;
+  --r:     18px;
+  --r-md:  24px;
+  --r-lg:  32px;
+  --r-xl:  40px;
+
+  /* Padding density */
+  --pad-1: 8px;
+  --pad-2: 14px;
+  --pad-3: 20px;
+  --pad-4: 28px;
+  --pad-5: 40px;
+
+  /* Shadows */
+  --sh-1: 0 1px 2px rgba(20,24,17,.04), 0 1px 3px rgba(20,24,17,.04);
+  --sh-2: 0 4px 12px rgba(20,24,17,.05), 0 12px 28px rgba(20,24,17,.06);
+  --sh-3: 0 12px 32px rgba(20,24,17,.08), 0 32px 60px rgba(20,24,17,.10);
+
+  /* Typography */
+  --f-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --f-sans:    'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  --f-mono:    'Geist Mono', ui-monospace, monospace;
+
+  /* shadcn/ui compat mappings */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --primary: var(--forest-700);
+  --primary-foreground: var(--on-accent);
+  --secondary: var(--forest-100);
+  --secondary-foreground: var(--forest-800);
+  --muted-foreground: var(--muted);
+  --border: var(--line);
+  --input: var(--surface);
+  --ring: var(--forest-500);
+  --radius: 18px;
+}
+
+/* Dark mode */
+.dark {
+  --paper:       #0F1310;
+  --paper-2:     #161A14;
+  --paper-3:     #1D2119;
+  --surface:     #181C16;
+  --surface-2:   #1F2419;
+  --ink:         #F1ECD9;
+  --ink-2:       #D6D0BC;
+  --muted:       #9CA095;
+  --faint:       #595D52;
+  --line:        #2A2E25;
+  --line-2:      #353930;
+  --forest-100:  #243027;
+  --forest-50:   #1A2218;
+  --accent-soft: #1F3328;
+  --coral-soft:  #3A2519;
+  --gold-soft:   #2F2818;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --border: var(--line);
+}
+
+/* ── Base reset ── */
+* { box-sizing: border-box; }
+
+html, body {
+  font-family: var(--f-sans);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography utilities ── */
+@layer utilities {
+  .t-display {
+    font-family: var(--f-display);
+    font-weight: 400;
+    letter-spacing: -0.018em;
+    line-height: 0.96;
+    color: var(--ink);
+  }
+  .t-display em, .t-display i { font-style: italic; }
+
+  .t-label {
+    font-family: var(--f-sans);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .t-eyebrow {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--forest-600);
+  }
+
+  .t-meta {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+  }
+
+  .t-mono {
+    font-family: var(--f-mono);
+    font-feature-settings: "tnum";
+  }
+}
+
+/* ── Component layer ── */
+@layer components {
+
+  /* Cards */
+  .t-card {
+    background: var(--surface);
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    box-shadow: var(--sh-1);
+  }
+  .t-card-lg {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    box-shadow: var(--sh-2);
+  }
+  .t-card-soft {
+    background: var(--surface-2);
+    border-radius: var(--r-md);
+  }
+
+  /* Pills */
+  .t-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    white-space: nowrap;
+    letter-spacing: -0.005em;
+  }
+  .t-pill-accent {
+    background: var(--forest-700);
+    color: var(--on-accent);
+    border-color: var(--forest-700);
+    border-radius: 9999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .t-pill-accent-soft {
+    background: var(--forest-100);
+    color: var(--forest-800);
+    border-color: transparent;
+    border-radius: 9999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .t-pill-coral {
+    background: var(--coral);
+    color: #fff;
+    border-color: var(--coral);
+    border-radius: 9999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Buttons */
+  .t-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 9999px;
+    font-family: var(--f-sans);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .t-btn:hover { transform: translateY(-1px); }
+  .t-btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: var(--sh-2);
+  }
+  .t-btn-accent {
+    background: var(--forest-700);
+    color: var(--on-accent);
+    box-shadow: 0 6px 16px rgba(31,86,65,0.25);
+  }
+  .t-btn-coral {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(221,120,66,0.25);
+  }
+  .t-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line-2);
+  }
+
+  /* Input */
+  .t-input {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    font-family: var(--f-sans);
+    font-size: 16px;
+    color: var(--ink);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .t-input:focus {
+    border-color: var(--forest-500);
+    box-shadow: 0 0 0 3px var(--forest-100);
+  }
+
+  /* Progress bar */
+  .t-bar {
+    height: 8px;
+    background: var(--paper-2);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  .t-bar-fill {
+    height: 100%;
+    background: var(--forest-700);
+    border-radius: 9999px;
+    transition: width 0.6s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* Decorative scribble underline */
+  .t-underline-scribble {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 6' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M1 4 Q 25 -1 50 3 T 99 4' stroke='%23DD7842' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 6px;
+    padding-bottom: 6px;
+  }
+
+  /* Soft highlight */
+  .t-underline-soft {
+    background-image: linear-gradient(transparent 70%, var(--forest-100) 70%);
+    padding: 0 4px;
+  }
+
+  /* Avatar */
+  .t-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    border: 1.5px solid var(--paper);
+    background: var(--forest-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Hatch texture */
+  .t-hatch {
+    background-image: repeating-linear-gradient(135deg, rgba(20,24,17,0.07) 0 1px, transparent 1px 6px);
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--paper-2); border-radius: 9999px; }
+::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ── Selection ── */
+::selection { background: var(--forest-100); color: var(--forest-900); }
