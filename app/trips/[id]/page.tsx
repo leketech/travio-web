@@ -4,16 +4,18 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import BudgetBreakdown from '@/components/planner/BudgetBreakdown'
 import BudgetChart from '@/components/planner/BudgetChart'
-import { mockBangkokResult } from '@/lib/mock-data'
+import AccommodationCards from '@/components/planner/AccommodationCards'
+import LocalRecommendations from '@/components/planner/LocalRecommendations'
+import { mockBangkokResult, bangkokAccommodations, bangkokFoodPlaces, bangkokActivities } from '@/lib/mock-data'
 import Link from 'next/link'
-import { ArrowLeft, Share2, Bookmark } from 'lucide-react'
+import { ArrowLeft, Share2, Bookmark, FileDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Budget Plan',
 }
 
 // In production this would fetch from the API
-async function getTripResult(id: string) {
+async function getTripResult(_id: string) {
   // TODO: fetch from /api/trips/[id]
   return mockBangkokResult
 }
@@ -80,6 +82,25 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
                 <Share2 size={14} />
                 Share
               </button>
+              <Link
+                href={`/trips/${id}/print`}
+                target="_blank"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  padding: '8px 14px',
+                  borderRadius: 9999,
+                  background: 'var(--forest-700)',
+                  color: 'var(--on-accent)',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                }}
+              >
+                <FileDown size={14} />
+                Export PDF
+              </Link>
             </div>
           </div>
 
@@ -190,6 +211,84 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
               </div>
             </div>
           </div>
+
+          {/* Accommodation cards */}
+          <div
+            style={{
+              background: 'var(--surface)',
+              borderRadius: 'var(--r-lg)',
+              border: '1px solid var(--line)',
+              boxShadow: 'var(--sh-1)',
+              padding: 28,
+              marginTop: 20,
+            }}
+          >
+            <AccommodationCards
+              accommodations={bangkokAccommodations}
+              nights={result.days}
+              budgetPerNight={Math.round(
+                (result.categories.find((c) => c.id === 'accommodation')?.amount ?? 0) / result.days
+              )}
+              currency={result.currency}
+            />
+          </div>
+
+          {/* Food & activities */}
+          <div
+            style={{
+              background: 'var(--surface)',
+              borderRadius: 'var(--r-lg)',
+              border: '1px solid var(--line)',
+              boxShadow: 'var(--sh-1)',
+              padding: 28,
+              marginTop: 20,
+            }}
+          >
+            <LocalRecommendations
+              foodPlaces={bangkokFoodPlaces}
+              activities={bangkokActivities}
+            />
+          </div>
+        </div>
+
+        {/* Premium upsell */}
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: '24px auto 0',
+            background: 'var(--forest-800)',
+            borderRadius: 'var(--r-lg)',
+            padding: '28px 32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 24,
+            flexWrap: 'wrap',
+          }}
+        >
+          <div>
+            <p style={{ fontSize: 16, fontWeight: 700, color: 'var(--on-accent)', marginBottom: 4 }}>
+              Unlock unlimited trips &amp; AI rebalancing
+            </p>
+            <p style={{ fontSize: 13, color: 'rgba(250,246,236,0.65)', lineHeight: 1.4 }}>
+              Premium from $6.58/month · 7-day free trial · Cancel anytime
+            </p>
+          </div>
+          <Link
+            href="/pricing"
+            style={{
+              padding: '12px 24px',
+              borderRadius: 9999,
+              background: 'var(--gold)',
+              color: 'var(--ink)',
+              fontSize: 14,
+              fontWeight: 700,
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            See plans →
+          </Link>
         </div>
       </main>
       <Footer />

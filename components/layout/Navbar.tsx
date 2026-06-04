@@ -3,12 +3,12 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X, Plane } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 const navLinks = [
   { label: 'Plan a Trip', href: '/#planner' },
   { label: 'Can I Afford?', href: '/afford' },
   { label: 'Compare', href: '/compare' },
+  { label: 'Pricing', href: '/pricing' },
 ]
 
 export default function Navbar() {

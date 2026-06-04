@@ -17,9 +17,9 @@ const DAILY_COSTS: Record<string, number> = {
   tbilisi: 40, yerevan: 45,
   // Americas
   'new york': 280, 'los angeles': 200, cancun: 90, 'mexico city': 60,
-  medellin: 60, buenos aires: 80,
+  medellin: 60, 'buenos aires': 80,
   // Africa
-  marrakech: 60, nairobi: 70, cape town: 80,
+  marrakech: 60, nairobi: 70, 'cape town': 80,
 }
 
 function getDailyCost(destination: string): number {

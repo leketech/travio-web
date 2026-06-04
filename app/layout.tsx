@@ -45,8 +45,10 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* Strip browser-extension attributes that cause hydration mismatches */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var o=new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==='attributes'&&(m.attributeName==='bis_skin_checked'||m.attributeName==='bis_register')){m.target.removeAttribute(m.attributeName)}})});o.observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked','bis_register']})})()` }} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

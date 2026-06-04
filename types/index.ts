@@ -105,6 +105,44 @@ export interface ApiResponse<T> {
 export interface PlanRequest extends TripInput {}
 export interface PlanResponse extends BudgetResult {}
 
+// ── Recommendation types ───────────────────────────────────────────
+
+export interface AccommodationCard {
+  id: string
+  name: string
+  type: 'hostel' | 'guesthouse' | 'budget-hotel' | 'mid-range-hotel'
+  pricePerNight: number
+  currency: string
+  rating: number
+  reviewCount: number
+  neighborhood: string
+  highlights: string[]
+  bookingUrl: string
+}
+
+export interface FoodPlace {
+  id: string
+  name: string
+  cuisine: string
+  priceLevel: 1 | 2 | 3
+  avgMeal: number
+  currency: string
+  specialty: string
+  neighborhood: string
+  tip?: string
+}
+
+export interface ActivityRecommendation {
+  id: string
+  name: string
+  category: 'culture' | 'nature' | 'food-tour' | 'adventure' | 'free'
+  price: number
+  currency: string
+  duration: string
+  description: string
+  bookingUrl?: string
+}
+
 // ── UI types ───────────────────────────────────────────────────────
 
 export type Theme = 'light' | 'dark'

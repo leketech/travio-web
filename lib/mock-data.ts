@@ -1,4 +1,4 @@
-import type { BudgetResult, CompareDestination, SavedTrip } from '@/types'
+import type { BudgetResult, CompareDestination, SavedTrip, AccommodationCard, FoodPlace, ActivityRecommendation } from '@/types'
 
 // ── Mock budget result (Bangkok 7-day) ────────────────────────────
 export const mockBangkokResult: BudgetResult = {
@@ -221,5 +221,193 @@ export const mockSavedTrips: SavedTrip[] = [
       verdict: 'yes',
       verdictMessage: 'Great choice! Hanoi is very affordable.',
     },
+  },
+]
+
+// ── Bangkok accommodation cards ───────────────────────────────────
+export const bangkokAccommodations: AccommodationCard[] = [
+  {
+    id: 'nap-park',
+    name: 'Nap Park Hostel',
+    type: 'hostel',
+    pricePerNight: 14,
+    currency: 'USD',
+    rating: 8.7,
+    reviewCount: 2340,
+    neighborhood: 'Banglamphu / Khao San',
+    highlights: ['Free breakfast', 'Rooftop bar', '5 min walk to Khao San Rd'],
+    bookingUrl:
+      'https://www.booking.com/hotel/th/nap-park-hostel.html?aid=travio&label=travio-bangkok',
+  },
+  {
+    id: 'lub-d-siam',
+    name: "Lub d Bangkok Siam",
+    type: 'hostel',
+    pricePerNight: 22,
+    currency: 'USD',
+    rating: 9.0,
+    reviewCount: 4810,
+    neighborhood: 'Siam / City Centre',
+    highlights: ['Attached to BTS Skytrain', 'Co-working space', 'Social events nightly'],
+    bookingUrl:
+      'https://www.booking.com/hotel/th/lub-d-bangkok-siam.html?aid=travio&label=travio-bangkok',
+  },
+  {
+    id: 'atta-hostel',
+    name: 'Atta Hostel',
+    type: 'guesthouse',
+    pricePerNight: 18,
+    currency: 'USD',
+    rating: 8.5,
+    reviewCount: 1620,
+    neighborhood: 'Banglamphu / Khao San',
+    highlights: ['Private rooms available', 'Courtyard garden', 'Local tour desk'],
+    bookingUrl:
+      'https://www.booking.com/hotel/th/atta-hostel-bangkok.html?aid=travio&label=travio-bangkok',
+  },
+  {
+    id: 'ibis-siam',
+    name: 'ibis Bangkok Siam',
+    type: 'budget-hotel',
+    pricePerNight: 38,
+    currency: 'USD',
+    rating: 8.3,
+    reviewCount: 6200,
+    neighborhood: 'Siam / City Centre',
+    highlights: ['24h reception', 'Air-conditioned rooms', 'Steps from MBK Center'],
+    bookingUrl:
+      'https://www.booking.com/hotel/th/ibis-bangkok-siam.html?aid=travio&label=travio-bangkok',
+  },
+]
+
+// ── Bangkok food places ───────────────────────────────────────────
+export const bangkokFoodPlaces: FoodPlace[] = [
+  {
+    id: 'jay-fai',
+    name: 'Raan Jay Fai',
+    cuisine: 'Thai Street Food',
+    priceLevel: 3,
+    avgMeal: 18,
+    currency: 'USD',
+    specialty: 'Crab omelette & drunken noodles',
+    neighborhood: 'Banglamphu',
+    tip: 'Michelin-starred street stall — queue early or book ahead',
+  },
+  {
+    id: 'or-tor-kor',
+    name: 'Or Tor Kor Market',
+    cuisine: 'Thai Market',
+    priceLevel: 1,
+    avgMeal: 4,
+    currency: 'USD',
+    specialty: 'Mango sticky rice, fresh Thai dishes',
+    neighborhood: 'Chatuchak',
+    tip: 'Best mango sticky rice in Bangkok — ฿80–120',
+  },
+  {
+    id: 'jok-prince',
+    name: 'Jok Prince',
+    cuisine: 'Thai Breakfast',
+    priceLevel: 1,
+    avgMeal: 3,
+    currency: 'USD',
+    specialty: 'Rice porridge (jok) with pork',
+    neighborhood: 'Banglamphu',
+    tip: 'Opens at 6am — popular with locals, cheap and filling',
+  },
+  {
+    id: 'thip-samai',
+    name: 'Thip Samai',
+    cuisine: 'Thai',
+    priceLevel: 1,
+    avgMeal: 5,
+    currency: 'USD',
+    specialty: 'Pad thai wrapped in egg',
+    neighborhood: 'Old City',
+    tip: 'Queues form early — go before 6pm or after 9pm',
+  },
+  {
+    id: 'chatuchak-food',
+    name: 'Chatuchak Weekend Market',
+    cuisine: 'Street Food',
+    priceLevel: 1,
+    avgMeal: 4,
+    currency: 'USD',
+    specialty: 'Grilled satay, coconut ice cream, fresh juices',
+    neighborhood: 'Chatuchak',
+    tip: 'Weekend only (Sat–Sun). 15,000 stalls — arrive before 11am',
+  },
+  {
+    id: 'supanniga-eating',
+    name: 'Supanniga Eating Room',
+    cuisine: 'Thai Fine Casual',
+    priceLevel: 2,
+    avgMeal: 12,
+    currency: 'USD',
+    specialty: 'Eastern Thai cuisine, crab curry',
+    neighborhood: 'Thonglor / Ekkamai',
+    tip: 'Best mid-range Thai restaurant in town — book ahead',
+  },
+]
+
+// ── Bangkok activities ─────────────────────────────────────────────
+export const bangkokActivities: ActivityRecommendation[] = [
+  {
+    id: 'grand-palace',
+    name: 'Grand Palace & Wat Phra Kaew',
+    category: 'culture',
+    price: 17,
+    currency: 'USD',
+    duration: '2–3 hours',
+    description: 'The most iconic site in Bangkok. Includes the Emerald Buddha temple. Dress modestly — sarongs available at entrance.',
+  },
+  {
+    id: 'wat-pho',
+    name: 'Wat Pho (Reclining Buddha)',
+    category: 'culture',
+    price: 7,
+    currency: 'USD',
+    duration: '1 hour',
+    description: '46m reclining Buddha and the birthplace of traditional Thai massage. Book a massage in the temple complex.',
+  },
+  {
+    id: 'chao-phraya-ferry',
+    name: 'Chao Phraya River Ferry',
+    category: 'free',
+    price: 0,
+    currency: 'USD',
+    duration: 'As long as you like',
+    description: 'Hop on the orange-flag express boat and see riverside Bangkok for almost nothing. Best views at golden hour.',
+  },
+  {
+    id: 'floating-market',
+    name: 'Damnoen Saduak Floating Market',
+    category: 'culture',
+    price: 22,
+    currency: 'USD',
+    duration: 'Half day',
+    description: 'Vendors selling food and crafts from boats on the canals. Best experienced early morning before the tour buses.',
+    bookingUrl:
+      'https://www.getyourguide.com/bangkok-l169/damnoen-saduak-floating-market-tour-tc24/?partner_id=travio',
+  },
+  {
+    id: 'cooking-class',
+    name: 'Thai Cooking Class',
+    category: 'food-tour',
+    price: 35,
+    currency: 'USD',
+    duration: '4 hours',
+    description: 'Learn to cook 4 classic Thai dishes. Most classes include a market visit and a recipe book to take home.',
+    bookingUrl:
+      'https://www.getyourguide.com/bangkok-l169/thai-cooking-class-tc24/?partner_id=travio',
+  },
+  {
+    id: 'lumpini-park',
+    name: 'Lumpini Park',
+    category: 'free',
+    price: 0,
+    currency: 'USD',
+    duration: '1–2 hours',
+    description: 'Bangkok\'s green lung. Watch locals doing morning tai chi, spot giant monitor lizards, and rent a paddleboat.',
   },
 ]
